@@ -21,6 +21,14 @@ const port = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Set folder statis untuk file HTML
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Route untuk mengirimkan file HTML
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html')); // Pastikan path sudah sesuai
+});
+
 // Set EJS sebagai view engine dan tentukan direktori views
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
