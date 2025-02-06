@@ -34,7 +34,8 @@
         <label for="status_dokter" class="form-label">Status Dokter</label>
         <select class="form-select" id="status_dokter" name="status_dokter" required>
           <option value="Telah ditangani" <%= dokter.status_dokter === 'Telah ditangani' ? 'selected' : '' %>>Telah ditangani</option>
-          <option value="Belum ditangani" <%= dokter.status_dokter === 'Belum ditangani' ? 'selected' : '' %>>Belum ditangani</option>
+<option value="Belum ditangani" <%= dokter.status_dokter === 'Belum ditangani' ? 'selected' : '' %>>Belum ditangani</option>
+
         </select>
       </div>
       <button type="submit" class="btn btn-warning">Update Dokter</button>

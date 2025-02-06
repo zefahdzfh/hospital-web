@@ -29,6 +29,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+
 /* ROUTES */
 
 // === ROUTES UNTUK PEGAWAI ===
@@ -163,3 +170,8 @@ app.post('/dokter/:id_dokter/edit', DokterController.update);
 
 // Proses hapus dokter
 app.post('/dokter/:id_dokter/delete', DokterController.delete);
+
+//detail
+// Route untuk menampilkan detail dokter
+app.get('/dokter/:id_dokter/detail', DokterController.show);
+
