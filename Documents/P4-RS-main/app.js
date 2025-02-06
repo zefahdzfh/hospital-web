@@ -28,7 +28,7 @@ app.use(express.json());
 app.get('/', async (req, res) => {
   try {
     const pegawais = await PegawaiController.listPegawai();
-    res.render('pegawai/pegawai_list', { pegawais });
+    res.render('pegawai_list', { pegawais });
   } catch (error) {
     res.status(500).send('Error saat mengambil data pegawai.');
   }
@@ -36,7 +36,7 @@ app.get('/', async (req, res) => {
 
 // Tampilkan form tambah pegawai
 app.get('/pegawai/new', (req, res) => {
-  res.render('pegawai/pegawai_new');
+  res.render('pegawai_new');
 });
 
 // Proses tambah pegawai baru
@@ -63,7 +63,7 @@ app.get('/pegawai/:id', async (req, res) => {
 app.get('/pegawai/:id/edit', async (req, res) => {
   try {
     const pegawai = await PegawaiController.showPegawai(req.params.id);
-    res.render('pegawai/pegawai_edit', { pegawai });
+    res.render('pegawai_edit', { pegawai });
   } catch (error) {
     res.status(500).send('Error saat mengambil data untuk edit.');
   }
