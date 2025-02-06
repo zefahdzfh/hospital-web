@@ -38,10 +38,17 @@ app.use((err, req, res, next) => {
 
 /* ROUTES */
 
+// === ROUTES UNTUK HALAMAN UTAMA ===
+
+// Route utama: mengarah ke index.ejs
+app.get('/', (req, res) => {
+  res.render('index');  // Render index.ejs di folder views
+});
+
 // === ROUTES UNTUK PEGAWAI ===
 
 // Tampilkan daftar pegawai
-app.get('/', async (req, res) => {
+app.get('/pegawai', async (req, res) => {
   try {
     const pegawais = await PegawaiController.listPegawai();
     res.render('pegawai/pegawai_list', { pegawais });
