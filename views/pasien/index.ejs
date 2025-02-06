@@ -1,47 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Pasien</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1>Data Pasien</h1>
-  <a href="/pasien/new">Tambah Pasien</a>
-  <table border="1" cellpadding="5" cellspacing="0">
-    <thead>
-      <tr>
-        <th>No RM</th>
-        <th>KTP</th>
-        <th>Nama Pasien</th>
-        <th>Tanggal Lahir</th>
-        <th>Alamat</th>
-        <th>Tinggi</th>
-        <th>Berat</th>
-        <th>Ibu Kandung</th>
-        <th>Aksi</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% pasien.forEach(function(p) { %>
-        <tr>
-          <td><%= p.no_rm %></td>
-          <td><%= p.ktp %></td>
-          <td><%= p.nama_pasien %></td>
-          <td><%= p.tgl_lahir.toISOString().substring(0,10) %></td>
-          <td><%= p.alamat %></td>
-          <td><%= p.tinggi %></td>
-          <td><%= p.berat %></td>
-          <td><%= p.ibu_kandung %></td>
-          <td>
-            <a href="/pasien/<%= p.no_rm %>">Detail</a>
-            <a href="/pasien/<%= p.no_rm %>/edit">Edit</a>
-            <form action="/pasien/<%= p.no_rm %>/delete" method="POST" style="display:inline">
-              <button type="submit" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</button>
-            </form>
-          </td>
-        </tr>
-      <% }); %>
-    </tbody>
-  </table>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold text-gray-700 mb-4">Data Pasien</h1>
+    <a href="/pasien/new" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg mb-4 inline-block">Tambah Pasien</a>
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse bg-white shadow-md rounded-lg">
+        <thead class="bg-blue-500 text-white">
+          <tr>
+            <th class="py-3 px-4">No RM</th>
+            <th class="py-3 px-4">KTP</th>
+            <th class="py-3 px-4">Nama Pasien</th>
+            <th class="py-3 px-4">Tanggal Lahir</th>
+            <th class="py-3 px-4">Alamat</th>
+            <th class="py-3 px-4">Tinggi</th>
+            <th class="py-3 px-4">Berat</th>
+            <th class="py-3 px-4">Ibu Kandung</th>
+            <th class="py-3 px-4">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% pasien.forEach(function(p) { %>
+            <tr class="border-b hover:bg-gray-50">
+              <td class="py-2 px-4"><%= p.no_rm %></td>
+              <td class="py-2 px-4"><%= p.ktp %></td>
+              <td class="py-2 px-4"><%= p.nama_pasien %></td>
+              <td class="py-2 px-4"><%= p.tgl_lahir.toISOString().substring(0,10) %></td>
+              <td class="py-2 px-4"><%= p.alamat %></td>
+              <td class="py-2 px-4"><%= p.tinggi %></td>
+              <td class="py-2 px-4"><%= p.berat %></td>
+              <td class="py-2 px-4"><%= p.ibu_kandung %></td>
+              <td class="py-2 px-4 flex space-x-2">
+                <a href="/pasien/<%= p.no_rm %>" class="text-blue-500 hover:underline">Detail</a>
+                <a href="/pasien/<%= p.no_rm %>/edit" class="text-green-500 hover:underline">Edit</a>
+                <form action="/pasien/<%= p.no_rm %>/delete" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                  <button type="submit" class="text-red-500 hover:underline">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Pasien</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+  <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-6 text-center">Detail Pasien</h1>
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">KTP:</label>
+        <p class="mt-1 text-gray-900"><%= pasien.ktp %></p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Nama Pasien:</label>
+        <p class="mt-1 text-gray-900"><%= pasien.nama_pasien %></p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Tanggal Lahir:</label>
+        <p class="mt-1 text-gray-900"><%= pasien.tgl_lahir.toISOString().substring(0,10) %></p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Alamat:</label>
+        <p class="mt-1 text-gray-900"><%= pasien.alamat %></p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Tinggi:</label>
+        <p class="mt-1 text-gray-900"><%= pasien.tinggi %> cm</p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Berat:</label>
+        <p class="mt-1 text-gray-900"><%= pasien.berat %> kg</p>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Ibu Kandung:</label>
+        <p class="mt-1 text-gray-900"><%= pasien.ibu_kandung %></p>
+      </div>
+
+      <div class="text-center mt-6">
+        <a href="/pasien/<%= pasien.no_rm %>/edit" class="text-indigo-600 hover:text-indigo-900">Edit Pasien</a>
+      </div>
+    </div>
+
+    <div class="text-center mt-6">
+      <a href="/pasien" class="text-indigo-600 hover:text-indigo-900">Kembali ke Daftar Pasien</a>
+    </div>
+  </div>
+</body>
+</html>

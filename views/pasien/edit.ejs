@@ -3,34 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <title>Edit Pasien</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <h1>Edit Pasien</h1>
-  <form action="/pasien/<%= pasien.no_rm %>" method="POST">
-    <label>KTP:</label>
-    <input type="number" name="ktp" value="<%= pasien.ktp %>" required><br><br>
+<body class="bg-gray-100 p-8">
+  <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-6 text-center">Edit Pasien</h1>
+    <form action="/pasien/<%= pasien.no_rm %>/edit" method="POST" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">KTP:</label>
+        <input type="number" name="ktp" value="<%= pasien.ktp %>" required
+               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+      </div>
 
-    <label>Nama Pasien:</label>
-    <input type="text" name="nama_pasien" value="<%= pasien.nama_pasien %>" required><br><br>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Nama Pasien:</label>
+        <input type="text" name="nama_pasien" value="<%= pasien.nama_pasien %>" required
+               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+      </div>
 
-    <label>Tanggal Lahir:</label>
-    <input type="date" name="tgl_lahir" value="<%= pasien.tgl_lahir.toISOString().substring(0,10) %>" required><br><br>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Tanggal Lahir:</label>
+        <input type="date" name="tgl_lahir" value="<%= pasien.tgl_lahir.toISOString().substring(0,10) %>" required
+               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+      </div>
 
-    <label>Alamat:</label>
-    <textarea name="alamat"><%= pasien.alamat %></textarea><br><br>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Alamat:</label>
+        <textarea name="alamat"
+                  class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"><%= pasien.alamat %></textarea>
+      </div>
 
-    <label>Tinggi:</label>
-    <input type="number" name="tinggi" value="<%= pasien.tinggi %>"><br><br>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Tinggi:</label>
+        <input type="number" name="tinggi" value="<%= pasien.tinggi %>"
+               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+      </div>
 
-    <label>Berat:</label>
-    <input type="number" name="berat" value="<%= pasien.berat %>"><br><br>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Berat:</label>
+        <input type="number" name="berat" value="<%= pasien.berat %>"
+               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+      </div>
 
-    <label>Ibu Kandung:</label>
-    <input type="text" name="ibu_kandung" value="<%= pasien.ibu_kandung %>"><br><br>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Ibu Kandung:</label>
+        <input type="text" name="ibu_kandung" value="<%= pasien.ibu_kandung %>"
+               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+      </div>
 
-    <button type="submit">Update</button>
-  </form>
-  <br>
-  <a href="/pasien">Kembali ke Daftar Pasien</a>
+      <div class="text-center">
+        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Update
+        </button>
+      </div>
+    </form>
+    <div class="text-center mt-6">
+      <a href="/pasien" class="text-indigo-600 hover:text-indigo-900">Kembali ke Daftar Pasien</a>
+    </div>
+  </div>
 </body>
 </html>
