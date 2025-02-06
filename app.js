@@ -63,7 +63,7 @@ app.get('/pegawai/:id', async (req, res) => {
 app.get('/pegawai/:id/edit', async (req, res) => {
   try {
     const pegawai = await PegawaiController.showPegawai(req.params.id);
-    res.render('pegawai_edit', { pegawai });
+    res.render('pegawai/pegawai_edit', { pegawai });
   } catch (error) {
     res.status(500).send('Error saat mengambil data untuk edit.');
   }
