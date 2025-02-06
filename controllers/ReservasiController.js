@@ -1,7 +1,8 @@
 // controllers/ReservasiController.js
 import Reservasi from '../models/Reservasi.js';
 import Pasien from '../models/Pasien.js';
-import Dokter from '../models/Dokter.js'; 
+import Dokter from '../models/Dokter.js';
+import Poli from '../models/Poli.js';
 
 class ReservasiController {
   // Tampilkan daftar reservasi dengan nama dokter dan poli
