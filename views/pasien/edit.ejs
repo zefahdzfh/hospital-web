@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Pasien</title>
+</head>
+<body>
+  <h1>Edit Pasien</h1>
+  <form action="/pasien/<%= pasien.no_rm %>" method="POST">
+    <label>KTP:</label>
+    <input type="number" name="ktp" value="<%= pasien.ktp %>" required><br><br>
+
+    <label>Nama Pasien:</label>
+    <input type="text" name="nama_pasien" value="<%= pasien.nama_pasien %>" required><br><br>
+
+    <label>Tanggal Lahir:</label>
+    <input type="date" name="tgl_lahir" value="<%= pasien.tgl_lahir.toISOString().substring(0,10) %>" required><br><br>
+
+    <label>Alamat:</label>
+    <textarea name="alamat"><%= pasien.alamat %></textarea><br><br>
+
+    <label>Tinggi:</label>
+    <input type="number" name="tinggi" value="<%= pasien.tinggi %>"><br><br>
+
+    <label>Berat:</label>
+    <input type="number" name="berat" value="<%= pasien.berat %>"><br><br>
+
+    <label>Ibu Kandung:</label>
+    <input type="text" name="ibu_kandung" value="<%= pasien.ibu_kandung %>"><br><br>
+
+    <button type="submit">Update</button>
+  </form>
+  <br>
+  <a href="/pasien">Kembali ke Daftar Pasien</a>
+</body>
+</html>

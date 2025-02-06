@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Data Pasien</title>
+</head>
+<body>
+  <h1>Data Pasien</h1>
+  <a href="/pasien/new">Tambah Pasien</a>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>No RM</th>
+        <th>KTP</th>
+        <th>Nama Pasien</th>
+        <th>Tanggal Lahir</th>
+        <th>Alamat</th>
+        <th>Tinggi</th>
+        <th>Berat</th>
+        <th>Ibu Kandung</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% pasien.forEach(function(p) { %>
+        <tr>
+          <td><%= p.no_rm %></td>
+          <td><%= p.ktp %></td>
+          <td><%= p.nama_pasien %></td>
+          <td><%= p.tgl_lahir.toISOString().substring(0,10) %></td>
+          <td><%= p.alamat %></td>
+          <td><%= p.tinggi %></td>
+          <td><%= p.berat %></td>
+          <td><%= p.ibu_kandung %></td>
+          <td>
+            <a href="/pasien/<%= p.no_rm %>">Detail</a>
+            <a href="/pasien/<%= p.no_rm %>/edit">Edit</a>
+            <form action="/pasien/<%= p.no_rm %>/delete" method="POST" style="display:inline">
+              <button type="submit" onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>
