@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Route untuk mengirimkan file HTML
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html')); // Pastikan path sudah sesuai
+  res.sendFile(path.join(__dirname, 'views/index.html')); // Pastikan path sudah sesuai
 });
 
 // Set EJS sebagai view engine dan tentukan direktori views
