@@ -11,7 +11,8 @@ import PasienController from './controllers/PasienController.js';
 import ReservasiController from './controllers/ReservasiController.js';
 import PoliController from './controllers/PoliController.js';
 import DokterController from './controllers/DokterController.js';
-
+import AntriController from './controllers/AntriController.js';
+import PembayaranController from './controllers/PembayaranController.js';
 
 
 const app = express();
@@ -149,12 +150,13 @@ app.listen(port, () => {
 
 
 // === ROUTES UNTUK RESERVASI ===
-app.get('/reservasi', ReservasiController.index);               // Tampilkan daftar reservasi
-app.get('/reservasi/new', ReservasiController.newForm);           // Tampilkan form tambah reservasi
-app.post('/reservasi', ReservasiController.create);               // Proses tambah reservasi
-app.get('/reservasi/:id/edit', ReservasiController.editForm);      // Tampilkan form edit reservasi
-app.post('/reservasi/:id/edit', ReservasiController.update);       // Proses update reservasi
-app.post('/reservasi/:id/delete', ReservasiController.delete);     // Proses hapus reservasi
+app.get('/reservasi', ReservasiController.index);
+app.get('/reservasi/new', ReservasiController.newForm);
+app.post('/reservasi', ReservasiController.create);
+app.get('/reservasi/:id/edit', ReservasiController.editForm);
+app.post('/reservasi/:id/edit', ReservasiController.update);
+app.post('/reservasi/:id/delete', ReservasiController.delete);
+
 
 // === ROUTES UNTUK POLI ===
 app.get('/poli', PoliController.index);
@@ -189,4 +191,23 @@ app.post('/dokter/:id_dokter/delete', DokterController.delete);
 //detail
 // Route untuk menampilkan detail dokter
 app.get('/dokter/:id_dokter/detail', DokterController.show);
+
+// === ROUTES UNTUK ANTRI ===
+app.get('/antri', AntriController.index); // Tampilkan daftar antrian
+app.get('/antri/new', AntriController.newForm); // Tampilkan form tambah antrian
+app.post('/antri', AntriController.create); // Proses tambah antrian
+
+app.get('/antri/:no_antrian', AntriController.show); // Tampilkan detail antrian
+
+app.post('/antri/:no_antrian/update', AntriController.update); // Update antrian
+app.post('/antri/:no_antrian/delete', AntriController.delete); // Hapus antrian
+
+
+// Routes Pembayaran
+app.get('/pembayaran', PembayaranController.index);
+app.get('/pembayaran/new', PembayaranController.createForm);
+app.post('/pembayaran', PembayaranController.create);
+app.get('/pembayaran/:id/edit', PembayaranController.editForm);
+app.post('/pembayaran/:id/update', PembayaranController.update);
+app.post('/pembayaran/:id/delete', PembayaranController.delete);
 

@@ -3,48 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tambah Reservasi</title>
+  <title>Tambah Antrian</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="container mt-5">
     <div class="card shadow-lg p-4">
-      <h2 class="text-center mb-4">Tambah Reservasi</h2>
-      <form action="/reservasi" method="POST">
+      <h2 class="text-center mb-4">Tambah Antrian</h2>
+      <form action="/antrian" method="POST">
         <div class="mb-3">
           <label for="no_rm" class="form-label">No RM</label>
           <select class="form-select" id="no_rm" name="no_rm" required>
             <option value="">Pilih Pasien</option>
-            <% pasienList.forEach(p => { %>
+            <% pasienList.forEach(function(p) { %>
               <option value="<%= p.no_rm %>"><%= p.no_rm %> - <%= p.nama_pasien %></option>
-            <% }) %>
+            <% }); %>
           </select>
         </div>
         <div class="mb-3">
           <label for="id_poli" class="form-label">Poli</label>
           <select class="form-select" id="id_poli" name="id_poli" required>
             <option value="">Pilih Poli</option>
-            <% poliList.forEach(p => { %>
+            <% poliList.forEach(function(p) { %>
               <option value="<%= p.id_poli %>"><%= p.nama_poli %></option>
-            <% }) %>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="id_dokter" class="form-label">Dokter</label>
-          <select class="form-select" id="id_dokter" name="id_dokter" required>
-            <option value="">Pilih Dokter</option>
-            <% dokterList.forEach(d => { %>
-              <option value="<%= d.id_dokter %>"><%= d.nama_dokter %></option>
-            <% }) %>
+            <% }); %>
           </select>
         </div>
         <div class="mb-3">
           <label for="no_antrian" class="form-label">Nomor Antrian</label>
           <input type="number" class="form-control" id="no_antrian" name="no_antrian" required>
         </div>
-        <button type="submit" class="btn btn-primary w-100">Simpan</button>
+        <button type="submit" class="btn btn-primary w-100">Tambah Antrian</button>
       </form>
-      <a href="/reservasi" class="btn btn-secondary mt-3 w-100">Kembali ke Daftar Reservasi</a>
+      <a href="/antrian" class="btn btn-secondary mt-3 w-100">Kembali ke Daftar Antrian</a>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

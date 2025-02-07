@@ -1,8 +1,6 @@
-// models/Reservasi.js
 import pool from '../config/db.js';
 
 class Reservasi {
-  // Mengambil semua data reservasi dengan nama dokter dan poli
   static async getAll() {
     const sql = `
       SELECT r.id_reservasi, r.no_rm, r.id_poli, r.id_dokter, r.no_antrian,
@@ -15,7 +13,6 @@ class Reservasi {
     return rows;
   }
 
-  // Mengambil data reservasi berdasarkan id_reservasi dengan nama dokter dan poli
   static async getById(id_reservasi) {
     const sql = `
       SELECT r.id_reservasi, r.no_rm, r.id_poli, r.id_dokter, r.no_antrian,
@@ -26,10 +23,9 @@ class Reservasi {
       WHERE r.id_reservasi = ?
     `;
     const [rows] = await pool.query(sql, [id_reservasi]);
-    return rows;
+    return rows.length > 0 ? rows[0] : null;
   }
 
-  // Menambahkan data reservasi baru
   static async create(data) {
     const { no_rm, id_poli, id_dokter, no_antrian } = data;
     const [result] = await pool.query(
@@ -39,7 +35,6 @@ class Reservasi {
     return result;
   }
 
-  // Memperbarui data reservasi berdasarkan id_reservasi
   static async update(id_reservasi, data) {
     const { no_rm, id_poli, id_dokter, no_antrian } = data;
     const [result] = await pool.query(
@@ -49,7 +44,6 @@ class Reservasi {
     return result;
   }
 
-  // Menghapus data reservasi berdasarkan id_reservasi
   static async delete(id_reservasi) {
     const [result] = await pool.query(
       "DELETE FROM reservasi WHERE id_reservasi = ?",
